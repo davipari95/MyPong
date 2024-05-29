@@ -10,11 +10,14 @@ public class MovePad : MonoBehaviour
     public KeyCode MovePadDownKey;
 
     private float Speed => GetComponentInParent<Settings>().PadSpeed;
+    private Rigidbody2D Body;
+    private BoxCollider BoxCollider;
 
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("Pad speed is setted to " + Speed.ToString("0.00"));
+        Body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -24,12 +27,13 @@ public class MovePad : MonoBehaviour
 
         if (Input.GetKey(MovePadUpKey))
         {
-            transform.position += new Vector3(0f, moveTo, 0f);
+            //transform.position += new Vector3(0f, moveTo, 0f);
+            Body.MovePosition(Body.position + new Vector2(0f, moveTo));
         }
 
         if (Input.GetKey(MovePadDownKey))
         {
-            transform.position += new Vector3(0f, -moveTo, 0f);
+            Body.MovePosition(Body.position + new Vector2(0f, -moveTo));
         }
     }
 }

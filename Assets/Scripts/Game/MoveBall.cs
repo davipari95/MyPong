@@ -12,7 +12,7 @@ public class MoveBall : MonoBehaviour
     void Start()
     {
         RigidBody = GetComponent<Rigidbody2D>();
-        RigidBody.AddForce(new Vector2(200, 200));
+        RigidBody.AddForce(new Vector2(3, 3), ForceMode2D.Impulse);
     }
 
     // Update is called once per frame
