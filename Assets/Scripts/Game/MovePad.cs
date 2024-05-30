@@ -23,6 +23,11 @@ public class MovePad : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    void FixedUpdate()
+    {
         float moveTo = Speed * Time.deltaTime;
 
         if (Input.GetKey(MovePadUpKey))
