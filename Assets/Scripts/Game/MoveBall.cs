@@ -5,19 +5,32 @@ using UnityEngine;
 public class MoveBall : MonoBehaviour
 {
 
-    float Speed => GetComponentInParent<Settings>().BallSpeed;
-    Rigidbody2D RigidBody;
+    float StartingForce => GetComponentInParent<Settings>().Force;
+    Rigidbody2D RigidBody => GetComponent<Rigidbody2D>();
 
-    // Start is called before the first frame update
     void Start()
     {
-        RigidBody = GetComponent<Rigidbody2D>();
-        RigidBody.AddForce(new Vector2(3, 3), ForceMode2D.Impulse);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void LaunchBall(Enums.SideEnum direction)
     {
-        
+        ResetPosition();
+        HitBall(direction);
+    }
+
+    public void Stop()
+    {
+        RigidBody.velocity = Vector2.zero;
+    }
+
+    private void ResetPosition()
+    {
+        transform.position = new Vector3(0f, 0f, 0f);
+    }
+
+    private void HitBall(Enums.SideEnum direction)
+    {
+        int dirVersor = direction == Enums.SideEnum.Left ? -1 : 1;
+        RigidBody.AddForce(new Vector2(StartingForce * dirVersor, 0), ForceMode2D.Impulse);
     }
 }

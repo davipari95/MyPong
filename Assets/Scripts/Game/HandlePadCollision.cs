@@ -1,7 +1,20 @@
+using System;
 using UnityEngine;
 
 public class HandlePadCollision : MonoBehaviour
 {
+
+    public enum PadSideEnum
+    {
+        Left,
+        Right,
+    }
+
+    public PadSideEnum PadSize = PadSideEnum.Left;
+
+    private float MaxHitAngle => FindFirstObjectByType<Camera>().GetComponent<Settings>().MaxHitAngle;
+    private float HitForce => FindFirstObjectByType<Camera>().GetComponent<Settings>().Force;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,8 +34,20 @@ public class HandlePadCollision : MonoBehaviour
             Vector2 hitPoint = GetAverageContactPoint(hit.contacts);
             Vector3 localPoint = transform.InverseTransformPoint(hitPoint.x, hitPoint.y, transform.position.z);
             Vector2 localHitPoint = new Vector2(localPoint.x, localPoint.y);
+            GameObject ball = hit.gameObject;
 
-            Debug.Log($"Hit on {localHitPoint.x} | {localHitPoint.y}");
+            double hitAngleRad = FromDegToRad(localHitPoint.y * MaxHitAngle);
+            Vector2 force = new Vector2((float)Math.Cos(hitAngleRad), (float)Math.Sin(hitAngleRad)) * HitForce;
+
+            if (PadSize == PadSideEnum.Right)
+            {
+                force = new Vector2(-force.x, force.y);
+            }
+
+            ball.GetComponent<Rigidbody2D>().velocity = Vector2.zero;   //Remove all forces
+            ball.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
+
+            FindFirstObjectByType<Camera>().GetComponent<Settings>().IncreaseForce();
         }
     }
 
@@ -38,5 +63,10 @@ public class HandlePadCollision : MonoBehaviour
         }
 
         return new Vector2(avgX, avgY);
+    }
+
+    private double FromDegToRad(float angleDeg)
+    {
+        return angleDeg * Math.PI / 180f;
     }
 }
