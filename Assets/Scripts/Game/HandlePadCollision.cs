@@ -18,9 +18,25 @@ public class HandlePadCollision : MonoBehaviour
     {
         if (hit.gameObject.name == "Ball")
         {
-            Debug.Log($"Conact on {hit.contacts[0].point.x} | {hit.contacts[0].point.y}");
+            Vector2 hitPoint = GetAverageContactPoint(hit.contacts);
+            Vector3 localPoint = transform.InverseTransformPoint(hitPoint.x, hitPoint.y, transform.position.z);
+            Vector2 localHitPoint = new Vector2(localPoint.x, localPoint.y);
 
-            GameObject ball = hit.gameObject;
+            Debug.Log($"Hit on {localHitPoint.x} | {localHitPoint.y}");
         }
+    }
+
+    private Vector2 GetAverageContactPoint(ContactPoint2D[] contacts)
+    {
+        float avgX = 0f;
+        float avgY = 0f;
+
+        for (int i = 0; i < contacts.Length; i++)
+        {
+            avgX = ((avgX * i) + contacts[i].point.x) / (i + 1);
+            avgY = ((avgY * i) + contacts[i].point.y) / (i + 1);
+        }
+
+        return new Vector2(avgX, avgY);
     }
 }
