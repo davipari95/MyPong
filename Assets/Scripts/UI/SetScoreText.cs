@@ -12,7 +12,7 @@ public class SetScoreText : MonoBehaviour
         string scoreText = "Actual score\r\n{0} - {1}";
         scoreText = string.Format(scoreText, GameSettings.Score.Left, GameSettings.Score.Right);
 
-        GetComponent<TextMeshPro>().text = scoreText;
+        GetComponent<TextMeshProUGUI>().text = scoreText;
     }
 
     public void OnEnable()

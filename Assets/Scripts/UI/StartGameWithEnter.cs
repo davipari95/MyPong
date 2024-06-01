@@ -24,8 +24,15 @@ public class StartGameWithEnter : MonoBehaviour
     private void StartGame()
     {
         gameObject.SetActive(false);
-        GameObject.Find("LeftPad").GetComponent<MovePad>().enabled = true;
-        GameObject.Find("RightPad").GetComponent<MovePad>().enabled = true;
+
+        string[] padNames = {"LeftPad", "RightPad"};
+
+        foreach (string padName in padNames)
+        {
+            GameObject.Find(padName).GetComponent<MovePad>().ResetPosition();
+            GameObject.Find(padName).GetComponent<MovePad>().enabled = true;
+        }
+
         GameObject.Find("Ball").GetComponent<MoveBall>().LaunchBall(GameSettings.LaunchSide);
     }
 }
