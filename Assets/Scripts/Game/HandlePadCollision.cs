@@ -10,7 +10,7 @@ public class HandlePadCollision : MonoBehaviour
         Right,
     }
 
-    public PadSideEnum PadSize = PadSideEnum.Left;
+    public PadSideEnum PadSide = PadSideEnum.Left;
 
     private float MaxHitAngle => FindFirstObjectByType<Camera>().GetComponent<Settings>().MaxHitAngle;
     private float HitForce => FindFirstObjectByType<Camera>().GetComponent<Settings>().Force;
@@ -39,7 +39,7 @@ public class HandlePadCollision : MonoBehaviour
             double hitAngleRad = FromDegToRad(localHitPoint.y * MaxHitAngle);
             Vector2 force = new Vector2((float)Math.Cos(hitAngleRad), (float)Math.Sin(hitAngleRad)) * HitForce;
 
-            if (PadSize == PadSideEnum.Right)
+            if (PadSide == PadSideEnum.Right)
             {
                 force = new Vector2(-force.x, force.y);
             }

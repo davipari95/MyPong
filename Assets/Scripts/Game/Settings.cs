@@ -24,12 +24,13 @@ public class Settings : MonoBehaviour
     public float MaxHitAngle;
     public float StartingForce;
     public float ForceIncrease;
+
+    [Header("Game")]
+    public Enums.SideEnum LaunchSide;
     #endregion
     
-    public ScoreStruct Score;
-    [HideInInspector]
-    public float Force;
-    public Enums.SideEnum LaunchSide;
+    [HideInInspector] public ScoreStruct Score;
+    [HideInInspector] public float Force;
 
     public void Start()
     {

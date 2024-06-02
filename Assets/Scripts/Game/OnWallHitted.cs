@@ -37,6 +37,8 @@ public class OnWallHitted : MonoBehaviour
                 GameSettings.AssignScore('l');
             }
 
+            GameSettings.LaunchSide = WallSide;
+
             ball.GetComponent<MoveBall>().Stop();
             GameObject.Find("LeftPad").GetComponent<MovePad>().enabled = false;
             GameObject.Find("RightPad").GetComponent<MovePad>().enabled = false;
