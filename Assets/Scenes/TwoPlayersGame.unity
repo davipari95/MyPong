@@ -361,7 +361,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &626398455
 GameObject:
@@ -525,6 +525,7 @@ MonoBehaviour:
   StartingForce: 5
   ForceIncrease: 1
   LaunchSide: 0
+  NrOfPlayers: 2
   Force: 4.5
 --- !u!1 &996193824
 GameObject:
@@ -1200,7 +1201,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &1286308501
 MonoBehaviour:
@@ -1697,7 +1698,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!1 &1747688094
 GameObject:
@@ -2040,6 +2041,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf52bb63af45b1849ac8c6ffb7c93497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsOnePlayerGame: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

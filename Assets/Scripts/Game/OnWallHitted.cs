@@ -41,7 +41,12 @@ public class OnWallHitted : MonoBehaviour
 
             ball.GetComponent<MoveBall>().Stop();
             GameObject.Find("LeftPad").GetComponent<MovePad>().enabled = false;
-            GameObject.Find("RightPad").GetComponent<MovePad>().enabled = false;
+
+            if (GameSettings.NrOfPlayers == 2)
+            {
+                GameObject.Find("RightPad").GetComponent<MovePad>().enabled = false;
+            }
+
 
             GameObject.Find("MainCamera").GetComponent<Settings>().Canvas.SetActive(true);
         }

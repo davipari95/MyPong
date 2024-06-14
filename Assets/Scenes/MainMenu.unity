@@ -956,13 +956,14 @@ GameObject:
   - component: {fileID: 667838318}
   - component: {fileID: 667838317}
   - component: {fileID: 667838320}
+  - component: {fileID: 667838321}
   m_Layer: 5
   m_Name: OnePlayerButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &667838316
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1079,6 +1080,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TransitionTime: 0.5
   MaxAlpha: 10
+--- !u!114 &667838321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667838315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fae78135bdf4724c89f3d822a522ccb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: OnePlayerGame
 --- !u!1 &789589594
 GameObject:
   m_ObjectHideFlags: 0

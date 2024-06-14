@@ -27,6 +27,7 @@ public class Settings : MonoBehaviour
 
     [Header("Game")]
     public Enums.SideEnum LaunchSide;
+    [Range(1, 2)] public int NrOfPlayers;
     #endregion
     
     [HideInInspector] public ScoreStruct Score;

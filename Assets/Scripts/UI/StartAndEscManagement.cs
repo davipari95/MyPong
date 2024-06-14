@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class StartGameWithEnter : MonoBehaviour
 {
+    public bool IsOnePlayerGame;
+
     private Settings GameSettings => GameObject.Find("MainCamera").GetComponent<Settings>();
 
     // Start is called before the first frame update
@@ -31,7 +34,19 @@ public class StartGameWithEnter : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        string[] padNames = {"LeftPad", "RightPad"};
+        List<string> padNames = new List<string>()
+        {
+            "LeftPad",
+        };
+
+        if (!IsOnePlayerGame)
+        {
+            padNames.Add("RightPad");
+        }
+        else
+        {
+            GameObject.Find("RightPad").GetComponent<PaddleIA>().Reset();
+        }
 
         foreach (string padName in padNames)
         {
